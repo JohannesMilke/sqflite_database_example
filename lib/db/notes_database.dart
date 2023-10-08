@@ -1,6 +1,6 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:sqflite_database_example/model/note.dart';
+import '../model/note.dart';
 
 class NotesDatabase {
   static final NotesDatabase instance = NotesDatabase._init();
@@ -24,10 +24,10 @@ class NotesDatabase {
   }
 
   Future _createDB(Database db, int version) async {
-    final idType = 'INTEGER PRIMARY KEY AUTOINCREMENT';
-    final textType = 'TEXT NOT NULL';
-    final boolType = 'BOOLEAN NOT NULL';
-    final integerType = 'INTEGER NOT NULL';
+    const idType = 'INTEGER PRIMARY KEY AUTOINCREMENT';
+    const textType = 'TEXT NOT NULL';
+    const boolType = 'BOOLEAN NOT NULL';
+    const integerType = 'INTEGER NOT NULL';
 
     await db.execute('''
 CREATE TABLE $tableNotes ( 

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:sqflite_database_example/db/notes_database.dart';
-import 'package:sqflite_database_example/model/note.dart';
-import 'package:sqflite_database_example/page/edit_note_page.dart';
+import '../db/notes_database.dart';
+import '../model/note.dart';
+import '../page/edit_note_page.dart';
 
 class NoteDetailPage extends StatefulWidget {
   final int noteId;
@@ -13,7 +13,7 @@ class NoteDetailPage extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _NoteDetailPageState createState() => _NoteDetailPageState();
+  State<NoteDetailPage> createState() => _NoteDetailPageState();
 }
 
 class _NoteDetailPageState extends State<NoteDetailPage> {
@@ -30,7 +30,7 @@ class _NoteDetailPageState extends State<NoteDetailPage> {
   Future refreshNote() async {
     setState(() => isLoading = true);
 
-    this.note = await NotesDatabase.instance.readNote(widget.noteId);
+    note = await NotesDatabase.instance.readNote(widget.noteId);
 
     setState(() => isLoading = false);
   }
@@ -41,29 +41,30 @@ class _NoteDetailPageState extends State<NoteDetailPage> {
           actions: [editButton(), deleteButton()],
         ),
         body: isLoading
-            ? Center(child: CircularProgressIndicator())
+            ? const Center(child: CircularProgressIndicator())
             : Padding(
-                padding: EdgeInsets.all(12),
+                padding: const EdgeInsets.all(12),
                 child: ListView(
-                  padding: EdgeInsets.symmetric(vertical: 8),
+                  padding: const EdgeInsets.symmetric(vertical: 8),
                   children: [
                     Text(
                       note.title,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     Text(
                       DateFormat.yMMMd().format(note.createdTime),
-                      style: TextStyle(color: Colors.white38),
+                      style: const TextStyle(color: Colors.white38),
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     Text(
                       note.description,
-                      style: TextStyle(color: Colors.white70, fontSize: 18),
+                      style:
+                          const TextStyle(color: Colors.white70, fontSize: 18),
                     )
                   ],
                 ),
@@ -71,7 +72,7 @@ class _NoteDetailPageState extends State<NoteDetailPage> {
       );
 
   Widget editButton() => IconButton(
-      icon: Icon(Icons.edit_outlined),
+      icon: const Icon(Icons.edit_outlined),
       onPressed: () async {
         if (isLoading) return;
 
@@ -83,7 +84,7 @@ class _NoteDetailPageState extends State<NoteDetailPage> {
       });
 
   Widget deleteButton() => IconButton(
-        icon: Icon(Icons.delete),
+        icon: const Icon(Icons.delete),
         onPressed: () async {
           await NotesDatabase.instance.delete(widget.noteId);
 

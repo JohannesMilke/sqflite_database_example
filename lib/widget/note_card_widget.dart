@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:sqflite_database_example/model/note.dart';
+import '../model/note.dart';
 
 final _lightColors = [
   Colors.amber.shade300,
@@ -12,7 +12,7 @@ final _lightColors = [
 ];
 
 class NoteCardWidget extends StatelessWidget {
-  NoteCardWidget({
+  const NoteCardWidget({
     Key? key,
     required this.note,
     required this.index,
@@ -32,7 +32,7 @@ class NoteCardWidget extends StatelessWidget {
       color: color,
       child: Container(
         constraints: BoxConstraints(minHeight: minHeight),
-        padding: EdgeInsets.all(8),
+        padding: const EdgeInsets.all(8),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -41,10 +41,10 @@ class NoteCardWidget extends StatelessWidget {
               time,
               style: TextStyle(color: Colors.grey.shade700),
             ),
-            SizedBox(height: 4),
+            const SizedBox(height: 4),
             Text(
               note.title,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.black,
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
