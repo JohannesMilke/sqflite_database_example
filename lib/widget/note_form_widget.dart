@@ -25,7 +25,7 @@ class NoteFormWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) => SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -47,9 +47,9 @@ class NoteFormWidget extends StatelessWidget {
                 ],
               ),
               buildTitle(),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               buildDescription(),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
             ],
           ),
         ),
@@ -58,12 +58,12 @@ class NoteFormWidget extends StatelessWidget {
   Widget buildTitle() => TextFormField(
         maxLines: 1,
         initialValue: title,
-        style: TextStyle(
+        style: const TextStyle(
           color: Colors.white70,
           fontWeight: FontWeight.bold,
           fontSize: 24,
         ),
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
           border: InputBorder.none,
           hintText: 'Title',
           hintStyle: TextStyle(color: Colors.white70),
@@ -76,8 +76,8 @@ class NoteFormWidget extends StatelessWidget {
   Widget buildDescription() => TextFormField(
         maxLines: 5,
         initialValue: description,
-        style: TextStyle(color: Colors.white60, fontSize: 18),
-        decoration: InputDecoration(
+        style: const TextStyle(color: Colors.white60, fontSize: 18),
+        decoration: const InputDecoration(
           border: InputBorder.none,
           hintText: 'Type something...',
           hintStyle: TextStyle(color: Colors.white60),

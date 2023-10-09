@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sqflite_database_example/db/notes_database.dart';
-import 'package:sqflite_database_example/model/note.dart';
-import 'package:sqflite_database_example/widget/note_form_widget.dart';
+import '../db/notes_database.dart';
+import '../model/note.dart';
+import '../widget/note_form_widget.dart';
 
 class AddEditNotePage extends StatefulWidget {
   final Note? note;
@@ -10,8 +10,9 @@ class AddEditNotePage extends StatefulWidget {
     Key? key,
     this.note,
   }) : super(key: key);
+
   @override
-  _AddEditNotePageState createState() => _AddEditNotePageState();
+  State<AddEditNotePage> createState() => _AddEditNotePageState();
 }
 
 class _AddEditNotePageState extends State<AddEditNotePage> {
@@ -57,14 +58,14 @@ class _AddEditNotePageState extends State<AddEditNotePage> {
     final isFormValid = title.isNotEmpty && description.isNotEmpty;
 
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          onPrimary: Colors.white,
-          primary: isFormValid ? null : Colors.grey.shade700,
+          foregroundColor: Colors.white,
+          backgroundColor: isFormValid ? null : Colors.grey.shade700,
         ),
         onPressed: addOrUpdateNote,
-        child: Text('Save'),
+        child: const Text('Save'),
       ),
     );
   }
